@@ -5,6 +5,7 @@ const swagger = require("./swagger.js");
 const routes = require("express").Router();
 
 routes.use("/", swagger);
+routes.use("/api-docs", swagger);
 routes.use("/users", users);
 routes.use("/posts", posts);
 

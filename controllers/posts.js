@@ -22,7 +22,7 @@ const getOne = async (req, res, next) => {
 const createPost = async (req, res, next) => {
   const userId = req.body.userId;
   const content = req.body.content;
-  if (!userId || content) {
+  if (!userId || !content) {
     res.status(400).send("Required parameter was not defined");
   } else {
     try {
@@ -41,7 +41,7 @@ const updateOne = async (req, res, next) => {
   const _id = new ObjectId(req.params.id);
   const userId = req.body.userId;
   const content = req.body.content;
-  if (!userId || content) {
+  if (!userId || !content) {
     res.status(400).send("Required parameter was not defined");
   } else {
     const post = {

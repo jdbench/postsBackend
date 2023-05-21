@@ -10,6 +10,16 @@ GET http://localhost:8080/users/6446cc4d01f4cfe9f38a9921 HTTP/1.1
 ###
 GET http://localhost:8080/users/6446cc9a01f4cfe9f38a9922 HTTP/1.1
 ###
+GET http://localhost:8080/posts HTTP/1.1
+###
+POST http://localhost:8080/posts HTTP/1.1
+content-type: application/json
+
+{
+    "content": "This is the content",
+    "userId": "Not really one"
+}
+###
 POST http://localhost:8080/users HTTP/1.1
 content-type: application/json
 
@@ -17,53 +27,82 @@ content-type: application/json
     "firstName":"John",
     "lastName":"Doe",
     "email":"johndoe@test.com",
-    "favoriteColor":"green",
-    "birthday":"06/20/1980"
+    "age":15,
+    "posts":["6469adaaa0997bfa5ed49ef9"],
+    "username":"johnDoe"
 }
 ###
-PUT http://localhost:8080/users/6456cc92cadd2604af1317d9 HTTP/1.1
+PUT http://localhost:8080/posts/6469adaaa0997bfa5ed49ef9 HTTP/1.1
 content-type: application/json
 
 {
-    "firstName":"Jane",
-    "lastName":"Doe",
-    "email":"janedoe@test.com",
-    "favoriteColor":"Yellow",
-    "birthday":"06/20/1980"
+    "content": "This is different content",
+    "userId": "6469ae05a0997bfa5ed49efa"
 }
 ###
-DELETE http://localhost:8080/users/6456cc92cadd2604af1317d9 HTTP/1.1
+PUT http://localhost:8080/users/6469ad7da0997bfa5ed49ef8 HTTP/1.1
+content-type: application/json
+
+{
+    "firstName":"jane",
+    "lastName":"Doe",
+    "email":"janedoe@test.com",
+    "age":34,
+    "posts":["6469adaaa0997bfa5ed49ef9"],
+    "username":"janeDoe"
+}
 ###
+DELETE http://localhost:8080/users/6469ad7da0997bfa5ed49ef8 HTTP/1.1
+###
+DELETE http://localhost:8080/posts/6469ad7da0997bfa5ed49ef8 HTTP/1.1
 // Production Deploy
-GET https://cse341-u7hn.onrender.com/users HTTP/1.1
+GET https://postsbackend.onrender.com/users HTTP/1.1
 ### 
-GET https://cse341-u7hn.onrender.com/users/6446cbd501f4cfe9f38a9920 HTTP/1.1
+GET https://postsbackend.onrender.com/users/6469ad7da0997bfa5ed49ef8 HTTP/1.1
 ### 
-GET https://cse341-u7hn.onrender.com/users/6446cc4d01f4cfe9f38a9921 HTTP/1.1
+GET https://postsbackend.onrender.com/posts/6469adaaa0997bfa5ed49ef9 HTTP/1.1
 ### 
-GET https://cse341-u7hn.onrender.com/users/6446cc9a01f4cfe9f38a9922 HTTP/1.1
-### 
-POST https://cse341-u7hn.onrender.com/users HTTP/1.1
+GET https://postsbackend.onrender.com/posts HTTP/1.1
+###
+POST https://postsbackend.onrender.com/posts HTTP/1.1
+content-type: application/json
+
+{
+    "content": "This is the content",
+    "userId": "Not really one"
+}
+###
+POST https://postsbackend.onrender.com/users HTTP/1.1
 content-type: application/json
 
 {
     "firstName":"John",
     "lastName":"Doe",
     "email":"johndoe@test.com",
-    "favoriteColor":"green",
-    "birthday":"06/20/1980"
+    "age":15,
+    "posts":["6469adaaa0997bfa5ed49ef9"],
+    "username":"johnDoe"
 }
 ###
-PUT https://cse341-u7hn.onrender.com/users/6456cc92cadd2604af1317d9 HTTP/1.1
+PUT https://postsbackend.onrender.com/6469adaaa0997bfa5ed49ef9 HTTP/1.1
 content-type: application/json
 
 {
-    "firstName":"Jane",
-    "lastName":"Doe",
-    "email":"janedoe@test.com",
-    "favoriteColor":"Yellow",
-    "birthday":"06/20/1980"
+    "content": "This is different content",
+    "userId": "6469ae05a0997bfa5ed49efa"
 }
 ###
-DELETE https://cse341-u7hn.onrender.com/users/6456cc92cadd2604af1317d9 HTTP/1.1
+PUT https://postsbackend.onrender.com/users/6456cc92cadd2604af1317d9 HTTP/1.1
+content-type: application/json
+
+{
+    "firstName":"jane",
+    "lastName":"Doe",
+    "email":"janedoe@test.com",
+    "age":34,
+    "posts":["6469adaaa0997bfa5ed49ef9"],
+    "username":"janeDoe"
+}
+###
+DELETE https://postsbackend.onrender.com/users/6456cc92cadd2604af1317d9 HTTP/1.1
 ###
