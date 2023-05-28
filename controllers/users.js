@@ -48,7 +48,7 @@ const createContact = async (req, res, next) => {
       });
       res.status(201).json(result);
     } catch (e) {
-      res.status(500).json(response.error ?? "There was an error.");
+      res.status(500).send(response.error ?? "There was an error.");
       console.error(e);
     }
   }
@@ -79,7 +79,7 @@ const updateOne = async (req, res, next) => {
       res.status(204).json(result);
     } catch (e) {
       console.error(e);
-      res.status(500).json(e ?? "There was an error updating the contact.");
+      res.status(500).send(e ?? "There was an error updating the contact.");
     }
   }
 };
@@ -90,7 +90,7 @@ const deleteOne = async (req, res, next) => {
     res.status(200).json(result);
   } catch (e) {
     console.error(e);
-    res.status(500).json(e ?? "There was an error updating the contact.");
+    res.status(500).send(e ?? "There was an error updating the contact.");
   }
 };
 

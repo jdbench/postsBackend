@@ -38,7 +38,9 @@ const createPost = async (req, res, next) => {
       res.status(201).json(result);
     } catch (e) {
       console.error(e);
-      res.status(500).json(response.error ?? "There was an error creating that post.");
+      res
+        .status(500)
+        .send(response.error ?? "There was an error creating that post.");
     }
   }
 };
@@ -62,7 +64,7 @@ const updateOne = async (req, res, next) => {
       res.status(204).json(result);
     } catch (e) {
       console.error(e);
-      res.status(500).json(e ?? "There was an error updating the post.");
+      res.status(500).send(e ?? "There was an error updating the post.");
     }
   }
 };
@@ -73,7 +75,7 @@ const deleteOne = async (req, res, next) => {
     res.status(200).json(result);
   } catch (e) {
     console.error(e);
-    res.status(500).json(e ?? "There was an error updating the post.");
+    res.status(500).send(e ?? "There was an error updating the post.");
   }
 };
 

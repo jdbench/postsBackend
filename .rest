@@ -20,6 +20,20 @@ content-type: application/json
     "userId": "Not really one"
 }
 ###
+POST http://localhost:8080/posts HTTP/1.1
+content-type: application/json
+
+{
+    "userId": "Not really one"
+}
+###
+POST http://localhost:8080/posts HTTP/1.1
+content-type: application/json
+
+{
+    "content": "This is the content",
+}
+###
 POST http://localhost:8080/users HTTP/1.1
 content-type: application/json
 
@@ -32,12 +46,125 @@ content-type: application/json
     "username":"johnDoe"
 }
 ###
+POST http://localhost:8080/users HTTP/1.1
+content-type: application/json
+
+{
+    "firstName":"John",
+    "lastName":"Doe",
+    "email":"johndoe@test.com",
+    "age":15,
+    "posts":["6469adaaa0997bfa5ed49ef9"],
+}
+###
+POST http://localhost:8080/users HTTP/1.1
+content-type: application/json
+
+{
+    "lastName":"Doe",
+    "email":"johndoe@test.com",
+    "age":15,
+    "posts":["6469adaaa0997bfa5ed49ef9"],
+    "username":"johnDoe"
+}
+###
+POST http://localhost:8080/users HTTP/1.1
+content-type: application/json
+
+{
+    "firstName":"John",
+    "email":"johndoe@test.com",
+    "age":15,
+    "posts":["6469adaaa0997bfa5ed49ef9"],
+    "username":"johnDoe"
+}
+###
+POST http://localhost:8080/users HTTP/1.1
+content-type: application/json
+
+{
+    "firstName":"John",
+    "lastName":"Doe",
+    "age":15,
+    "posts":["6469adaaa0997bfa5ed49ef9"],
+    "username":"johnDoe"
+}
+###
+POST http://localhost:8080/users HTTP/1.1
+content-type: application/json
+
+{
+    "firstName":"John",
+    "lastName":"Doe",
+    "email":"johndoe@test.com",
+    "posts":["6469adaaa0997bfa5ed49ef9"],
+    "username":"johnDoe"
+}
+###
 PUT http://localhost:8080/posts/6469adaaa0997bfa5ed49ef9 HTTP/1.1
 content-type: application/json
 
 {
     "content": "This is different content",
     "userId": "6469ae05a0997bfa5ed49efa"
+}
+###
+PUT http://localhost:8080/posts/6469adaaa0997bfa5ed49ef9 HTTP/1.1
+content-type: application/json
+
+{
+    "userId": "6469ae05a0997bfa5ed49efa"
+}
+###
+PUT http://localhost:8080/posts/6469adaaa0997bfa5ed49ef9 HTTP/1.1
+content-type: application/json
+
+{
+    "content": "This is different content",
+}
+###
+PUT http://localhost:8080/users/6469ad7da0997bfa5ed49ef8 HTTP/1.1
+content-type: application/json
+
+{
+    "lastName":"Doe",
+    "email":"janedoe@test.com",
+    "age":34,
+    "posts":["6469adaaa0997bfa5ed49ef9"],
+    "username":"janeDoe"
+}
+###
+PUT http://localhost:8080/users/6469ad7da0997bfa5ed49ef8 HTTP/1.1
+content-type: application/json
+
+{
+    "firstName":"jane",
+    "email":"janedoe@test.com",
+    "age":34,
+    "posts":["6469adaaa0997bfa5ed49ef9"],
+    "username":"janeDoe"
+}
+###
+PUT http://localhost:8080/users/6469ad7da0997bfa5ed49ef8 HTTP/1.1
+content-type: application/json
+
+{
+    "firstName":"jane",
+    "lastName":"Doe",
+    "age":34,
+    "posts":["6469adaaa0997bfa5ed49ef9"],
+    "username":"janeDoe"
+}
+###
+PUT http://localhost:8080/users/6469ad7da0997bfa5ed49ef8 HTTP/1.1
+content-type: application/json
+
+{
+    "firstName":"jane",
+    "lastName":"Doe",
+    "email":"janedoe@test.com",
+    "posts":["6469adaaa0997bfa5ed49ef9"],
+    "username":"janeDoe"
 }
 ###
 PUT http://localhost:8080/users/6469ad7da0997bfa5ed49ef8 HTTP/1.1
@@ -49,12 +176,15 @@ content-type: application/json
     "email":"janedoe@test.com",
     "age":34,
     "posts":["6469adaaa0997bfa5ed49ef9"],
-    "username":"janeDoe"
 }
 ###
 DELETE http://localhost:8080/users/6469ad7da0997bfa5ed49ef8 HTTP/1.1
 ###
+DELETE http://localhost:8080/users HTTP/1.1
+###
 DELETE http://localhost:8080/posts/6469ad7da0997bfa5ed49ef8 HTTP/1.1
+###
+DELETE http://localhost:8080/posts HTTP/1.1
 ###
 // Production Deploy
 GET https://postsbackend.onrender.com/users HTTP/1.1
@@ -73,6 +203,20 @@ content-type: application/json
     "userId": "Not really one"
 }
 ###
+POST https://postsbackend.onrender.com/posts HTTP/1.1
+content-type: application/json
+
+{
+    "content": "This is the content",
+}
+###
+POST https://postsbackend.onrender.com/posts HTTP/1.1
+content-type: application/json
+
+{
+    "userId": "Not really one"
+}
+###
 POST https://postsbackend.onrender.com/users HTTP/1.1
 content-type: application/json
 
@@ -85,12 +229,103 @@ content-type: application/json
     "username":"johnDoe"
 }
 ###
-PUT https://postsbackend.onrender.com/6469adaaa0997bfa5ed49ef9 HTTP/1.1
+POST https://postsbackend.onrender.com/users HTTP/1.1
+content-type: application/json
+
+{
+    "lastName":"Doe",
+    "email":"johndoe@test.com",
+    "age":15,
+    "posts":["6469adaaa0997bfa5ed49ef9"],
+    "username":"johnDoe"
+}
+###
+POST https://postsbackend.onrender.com/users HTTP/1.1
+content-type: application/json
+
+{
+    "firstName":"John",
+    "email":"johndoe@test.com",
+    "age":15,
+    "posts":["6469adaaa0997bfa5ed49ef9"],
+    "username":"johnDoe"
+}
+###
+POST https://postsbackend.onrender.com/users HTTP/1.1
+content-type: application/json
+
+{
+    "firstName":"John",
+    "lastName":"Doe",
+    "age":15,
+    "posts":["6469adaaa0997bfa5ed49ef9"],
+    "username":"johnDoe"
+}
+###
+POST https://postsbackend.onrender.com/users HTTP/1.1
+content-type: application/json
+
+{
+    "firstName":"John",
+    "lastName":"Doe",
+    "email":"johndoe@test.com",
+    "posts":["6469adaaa0997bfa5ed49ef9"],
+    "username":"johnDoe"
+}
+###
+POST https://postsbackend.onrender.com/users HTTP/1.1
+content-type: application/json
+
+{
+    "firstName":"John",
+    "lastName":"Doe",
+    "email":"johndoe@test.com",
+    "age":15,
+    "posts":["6469adaaa0997bfa5ed49ef9"],
+}
+###
+POST https://postsbackend.onrender.com/posts HTTP/1.1
 content-type: application/json
 
 {
     "content": "This is different content",
     "userId": "6469ae05a0997bfa5ed49efa"
+}
+###
+POST https://postsbackend.onrender.com/posts HTTP/1.1
+content-type: application/json
+
+{
+    "userId": "6469ae05a0997bfa5ed49efa"
+}
+###
+POST https://postsbackend.onrender.com/posts HTTP/1.1
+content-type: application/json
+
+{
+    "content": "This is different content",
+}
+###
+PUT https://postsbackend.onrender.com/posts/6469adaaa0997bfa5ed49ef9 HTTP/1.1
+content-type: application/json
+
+{
+    "content": "This is different content",
+    "userId": "6469ae05a0997bfa5ed49efa"
+}
+###
+PUT https://postsbackend.onrender.com/posts/6469adaaa0997bfa5ed49ef9 HTTP/1.1
+content-type: application/json
+
+{
+    "userId": "6469ae05a0997bfa5ed49efa"
+}
+###
+PUT https://postsbackend.onrender.com/posts/6469adaaa0997bfa5ed49ef9 HTTP/1.1
+content-type: application/json
+
+{
+    "content": "This is different content",
 }
 ###
 PUT https://postsbackend.onrender.com/users/6456cc92cadd2604af1317d9 HTTP/1.1
@@ -105,5 +340,62 @@ content-type: application/json
     "username":"janeDoe"
 }
 ###
+PUT https://postsbackend.onrender.com/users/6456cc92cadd2604af1317d9 HTTP/1.1
+content-type: application/json
+
+{
+    "firstName":"jane",
+    "lastName":"Doe",
+    "email":"janedoe@test.com",
+    "age":34,
+    "posts":["6469adaaa0997bfa5ed49ef9"],
+}
+###
+PUT https://postsbackend.onrender.com/users/6456cc92cadd2604af1317d9 HTTP/1.1
+content-type: application/json
+
+{
+    "lastName":"Doe",
+    "email":"janedoe@test.com",
+    "age":34,
+    "posts":["6469adaaa0997bfa5ed49ef9"],
+    "username":"janeDoe"
+}
+###
+PUT https://postsbackend.onrender.com/users/6456cc92cadd2604af1317d9 HTTP/1.1
+content-type: application/json
+
+{
+    "firstName":"jane",
+    "email":"janedoe@test.com",
+    "age":34,
+    "posts":["6469adaaa0997bfa5ed49ef9"],
+    "username":"janeDoe"
+}
+###
+PUT https://postsbackend.onrender.com/users/6456cc92cadd2604af1317d9 HTTP/1.1
+content-type: application/json
+
+{
+    "firstName":"jane",
+    "lastName":"Doe",
+    "age":34,
+    "posts":["6469adaaa0997bfa5ed49ef9"],
+    "username":"janeDoe"
+}
+###
+PUT https://postsbackend.onrender.com/users/6456cc92cadd2604af1317d9 HTTP/1.1
+content-type: application/json
+
+{
+    "firstName":"jane",
+    "lastName":"Doe",
+    "email":"janedoe@test.com",
+    "posts":["6469adaaa0997bfa5ed49ef9"],
+    "username":"janeDoe"
+}
+###
 DELETE https://postsbackend.onrender.com/users/6456cc92cadd2604af1317d9 HTTP/1.1
+###
+DELETE https://postsbackend.onrender.com/users HTTP/1.1
 ###
