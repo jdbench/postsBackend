@@ -2,12 +2,17 @@ const { ObjectId } = require("mongodb");
 const { getDb } = require("../db/mongo.js");
 
 const getAll = async (req, res, next) => {
-  const result = await getDb().db().collection("posts").find();
-  result.toArray().then((data) => {
-    console.log("fetched " + JSON.stringify(data));
-    res.setHeader("Content-Type", "application/json");
-    res.status(200).json(data);
-  });
+  try {
+    const result = await getDb().db().collection("posts").find();
+    result.toArray().then((data) => {
+      console.log("fetched " + JSON.stringify(data));
+      res.setHeader("Content-Type", "application/json");
+      res.status(200).json(data);
+    });
+  } catch (e) {
+    console.error(e);
+    res.status(500).send("There was an error get posts.");
+  }
 };
 
 const getOne = async (req, res, next) => {
@@ -32,7 +37,8 @@ const createPost = async (req, res, next) => {
       });
       res.status(201).json(result);
     } catch (e) {
-      res.status(500).json(response.error ?? "There was an error.");
+      console.error(e);
+      res.status(500).json(response.error ?? "There was an error creating that post.");
     }
   }
 };

@@ -2,20 +2,30 @@ const { ObjectId } = require("mongodb");
 const { getDb } = require("../db/mongo.js");
 
 const getAll = async (req, res, next) => {
-  const result = await getDb().db().collection("users").find();
-  result.toArray().then((data) => {
-    console.log("fetched " + JSON.stringify(data));
-    res.setHeader("Content-Type", "application/json");
-    res.status(200).json(data);
-  });
+  try {
+    const result = await getDb().db().collection("users").find();
+    result.toArray().then((data) => {
+      console.log("fetched " + JSON.stringify(data));
+      res.setHeader("Content-Type", "application/json");
+      res.status(200).json(data);
+    });
+  } catch (e) {
+    console.error(e);
+    res.status(500).send("There was an error getting users.");
+  }
 };
 
 const getOne = async (req, res, next) => {
-  const query = { _id: new ObjectId(req.params.id) };
-  const result = await getDb().db().collection("users").findOne(query);
-  if (!result) res.send("Not found").status(404);
-  else {
-    res.status(200).json(result);
+  try {
+    const query = { _id: new ObjectId(req.params.id) };
+    const result = await getDb().db().collection("users").findOne(query);
+    if (!result) res.send("Not found").status(404);
+    else {
+      res.status(200).json(result);
+    }
+  } catch (e) {
+    console.error(e);
+    res.status(500).send("There was an error getting that user.");
   }
 };
 
@@ -24,8 +34,8 @@ const createContact = async (req, res, next) => {
   const lastName = req.body.lastName;
   const email = req.body.email;
   const age = req.body.age;
-  const posts = req.body.posts;
-  if (!firstName || !lastName || !email || !age || !posts) {
+  const posts = req.body.posts ?? [];
+  if (!firstName || !lastName || !email || !age) {
     res.status(400).send("Required parameter was not defined");
   } else {
     try {
@@ -39,6 +49,7 @@ const createContact = async (req, res, next) => {
       res.status(201).json(result);
     } catch (e) {
       res.status(500).json(response.error ?? "There was an error.");
+      console.error(e);
     }
   }
 };
@@ -49,8 +60,8 @@ const updateOne = async (req, res, next) => {
   const lastName = req.body.lastName;
   const email = req.body.email;
   const age = req.body.age;
-  const posts = req.body.posts;
-  if (!firstName || !lastName || !email || !age || !posts) {
+  const posts = req.body.posts ?? [];
+  if (!firstName || !lastName || !email || !age) {
     res.status(400).send("Required parameter was not defined");
   } else {
     const contact = {
